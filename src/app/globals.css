@@ -1,26 +1,58 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Mapbox CSS */
+@import 'mapbox-gl/dist/mapbox-gl.css';
+
+/* Tailwind v4 Theme Configuration */
+@theme {
+  --color-gold: #fd5d00;
+  --color-neutral-dark: #121212;
+  --color-neutral-light: #e0e0e0;
+  --color-secure-teal: #00bfa6;
+  --color-threat-blue: #2c84d8;
+  --color-alert-amber: #fc6000;
+  --color-adversary-red: #e63946;
+  
+  --font-family-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-family-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-neutral-dark);
+  color: var(--color-neutral-light);
 }
+
+/* Custom CSS classes for better Tailwind v4 integration */
+.bg-gold { background-color: var(--color-gold); }
+.bg-neutral-dark { background-color: var(--color-neutral-dark); }
+.bg-neutral-light { background-color: var(--color-neutral-light); }
+.bg-secure-teal { background-color: var(--color-secure-teal); }
+.bg-threat-blue { background-color: var(--color-threat-blue); }
+.bg-alert-amber { background-color: var(--color-alert-amber); }
+.bg-adversary-red { background-color: var(--color-adversary-red); }
+
+.text-gold { color: var(--color-gold); }
+.text-neutral-dark { color: var(--color-neutral-dark); }
+.text-neutral-light { color: var(--color-neutral-light); }
+.text-secure-teal { color: var(--color-secure-teal); }
+.text-threat-blue { color: var(--color-threat-blue); }
+.text-alert-amber { color: var(--color-alert-amber); }
+.text-adversary-red { color: var(--color-adversary-red); }
+
+.border-gold { border-color: var(--color-gold); }
+.border-neutral-light { border-color: var(--color-neutral-light); }
+
+/* Hover states */
+.hover\:bg-gold:hover { background-color: var(--color-gold); }
+.hover\:text-gold:hover { color: var(--color-gold); }
+.hover\:bg-gold\/90:hover { background-color: color-mix(in srgb, var(--color-gold) 90%, transparent); }
+.hover\:bg-neutral-dark\/80:hover { background-color: color-mix(in srgb, var(--color-neutral-dark) 80%, transparent); }
+.hover\:bg-neutral-light:hover { background-color: var(--color-neutral-light); }
+.hover\:text-neutral-dark:hover { color: var(--color-neutral-dark); }
+.hover\:bg-neutral-light\/10:hover { background-color: color-mix(in srgb, var(--color-neutral-light) 10%, transparent); }
