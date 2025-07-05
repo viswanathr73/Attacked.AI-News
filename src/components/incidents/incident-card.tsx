@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { Incident } from "@/types/incident";
 import { formatDateTime, getIncidentTypeIcon } from "@/lib/utils";

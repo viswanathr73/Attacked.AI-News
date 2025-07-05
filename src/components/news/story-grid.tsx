@@ -1,3 +1,7 @@
+'use client';
+
+
+
 import { NewsStory } from "@/types/news";
 import { NewsCard } from "./news-card";
 import { Grid, List, SortAsc, Filter } from "lucide-react";

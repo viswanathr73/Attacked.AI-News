@@ -1,3 +1,6 @@
+"use client";
+
+
 import { NewsStory } from "@/types/news";
 import { formatDateTime } from "@/lib/utils";
 import { Clock, User, Tag, ExternalLink } from "lucide-react";
@@ -53,7 +56,7 @@ export function NewsCard({
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center space-x-2 text-xs text-neutral-light/60">
             <Clock className="w-3 h-3" />
-            <span>{formatDateTime(story.publishedAt)}</span>
+            <span>{story.publishedFormatted}</span>
           </div>
 
           {story.relatedIncidents && story.relatedIncidents.length > 0 && (

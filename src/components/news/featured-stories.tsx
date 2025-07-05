@@ -1,3 +1,5 @@
+"use client";
+
 import { NewsStory } from "@/types/news";
 import { NewsCard } from "./news-card";
 import { Newspaper, TrendingUp, Clock } from "lucide-react";

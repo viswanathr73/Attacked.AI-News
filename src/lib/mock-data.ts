@@ -105,7 +105,7 @@ export const mockNews: NewsStory[] = [
     author: "Sarah Chen",
     publishedAt: new Date(Date.now() - 1 * 60 * 60 * 1000).toISOString(),
     imageUrl:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=400&fit=crop",
+      "https://images.pexels.com/photos/3938023/pexels-photo-3938023.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
     category: "Cybersecurity",
     tags: ["ransomware", "healthcare", "breaking"],
     relatedIncidents: ["1"],

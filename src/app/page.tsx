@@ -5,7 +5,7 @@ import { Header } from "@/components/layout/header";
 import { AttackMap } from "@/components/map/attack-map";
 import { IncidentFeed } from "@/components/incidents/incident-feed";
 import { FeaturedStories } from "@/components/news/featured-stories";
-import { mockIncidents, mockNewsStories } from "@/lib/mock-data";
+import { mockIncidents, mockNews as mockNewsStories } from "@/lib/mock-data";
 import { Incident } from "@/types/incident";
 import { useRouter } from "next/navigation";
 import { Footer } from "@/components/layout/footer";

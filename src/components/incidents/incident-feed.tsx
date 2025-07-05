@@ -1,3 +1,5 @@
+"use client";
+
 import { Incident } from "@/types/incident";
 import { IncidentCard } from "./incident-card";
 import { RefreshCw, Activity, AlertTriangle } from "lucide-react";

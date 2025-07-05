@@ -62,10 +62,12 @@ export function getIncidentTypeIcon(type: string) {
       return "❓";
   }
 }
-export function formatDateTime(date: Date | string): string {
-  if (typeof window === "undefined") return ""; // Prevent SSR mismatch
+export function formatDateTime(date: string | Date): string {
+  // Avoid server mismatch
+  if (typeof window === 'undefined') return ''; // returns nothing on server
   return new Date(date).toLocaleString(undefined, {
-    dateStyle: "medium",
-    timeStyle: "short",
+    dateStyle: 'medium',
+    timeStyle: 'short',
   });
 }
+

@@ -1,34 +1,58 @@
-// src/components/map/mini-map.tsx
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
-import mapboxgl from "mapbox-gl";
-import { MAPBOX_STYLE } from "@/lib/constants";
+import { useEffect, useRef } from 'react';
+import mapboxgl from 'mapbox-gl';
+import { Incident } from '@/types/incident';
+import { MAPBOX_STYLE } from '@/lib/constants';
+import { getSeverityColor } from '@/lib/utils';
 
 interface MiniMapProps {
-  coordinates: [number, number];
+  incident: Incident;
+  className?: string;
   zoom?: number;
 }
 
-export function MiniMap({ coordinates, zoom = 5 }: MiniMapProps) {
+export function MiniMap({ incident, className, zoom = 10 }: MiniMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<mapboxgl.Map | null>(null);
 
   useEffect(() => {
+    if (!containerRef.current || !incident?.location?.coordinates) return;
+
+    console.log("Coordinates:", incident.location.coordinates);
+
     mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN!;
-    const map = new mapboxgl.Map({
-      container: containerRef.current!,
+    mapRef.current = new mapboxgl.Map({
+      container: containerRef.current,
       style: MAPBOX_STYLE,
-      center: coordinates,
+      center: incident.location.coordinates,
       zoom,
       interactive: false,
     });
 
-    new mapboxgl.Marker().setLngLat(coordinates).addTo(map);
+    const markerEl = document.createElement('div');
+    markerEl.className = 'incident-marker';
+    markerEl.style.cssText = `
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: ${getSeverityColor(incident.severity).replace('bg-', '#')};
+      border: 2px solid white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    `;
 
-    return () => map.remove();
-  }, [coordinates, zoom]);
+    new mapboxgl.Marker(markerEl)
+      .setLngLat(incident.location.coordinates)
+      .addTo(mapRef.current);
+
+    return () => {
+      mapRef.current?.remove();
+    };
+  }, [incident, zoom]);
 
   return (
-    <div ref={containerRef} className="w-full h-64 rounded-lg shadow-md" />
+    <div className={className}>
+      <div ref={containerRef} className="w-full h-full rounded-lg shadow-md" />
+    </div>
   );
 }

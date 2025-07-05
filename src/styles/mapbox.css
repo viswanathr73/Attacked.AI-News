@@ -14,32 +14,32 @@
 
 .mapboxgl-popup-content {
   background-color: #121212;
-  color: #e0e0e0;
-  border: 1px solid #fd5d00;
+  color: #E0E0E0;
+  border: 1px solid #FD5D00;
   border-radius: 0.5rem;
   padding: 1rem;
 }
 
 .mapboxgl-popup-close-button {
-  color: #e0e0e0;
+  color: #E0E0E0;
   font-size: 1.2rem;
 }
 
 .mapboxgl-popup-close-button:hover {
-  color: #fd5d00;
+  color: #FD5D00;
 }
 
 .mapboxgl-ctrl-group {
   background-color: #121212;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #E0E0E0;
 }
 
 .mapboxgl-ctrl button {
   background-color: #121212;
-  color: #e0e0e0;
+  color: #E0E0E0;
 }
 
 .mapboxgl-ctrl button:hover {
-  background-color: #fd5d00;
+  background-color: #FD5D00;
   color: #121212;
 }
