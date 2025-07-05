@@ -1,58 +1,16 @@
-@import 'tailwindcss';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
-
-/* Mapbox CSS */
-@import 'mapbox-gl/dist/mapbox-gl.css';
-
-/* Tailwind v4 Theme Configuration */
-@theme {
-  --color-gold: #fd5d00;
-  --color-neutral-dark: #121212;
-  --color-neutral-light: #e0e0e0;
-  --color-secure-teal: #00bfa6;
-  --color-threat-blue: #2c84d8;
-  --color-alert-amber: #fc6000;
-  --color-adversary-red: #e63946;
-  
-  --font-family-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-family-mono: 'JetBrains Mono', ui-monospace, monospace;
-}
+@import 'mapbox-glPreparations: GL JS/dist/mapbox-gl.css';
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-neutral-dark);
-  color: var(--color-neutral-light);
+  background-color: #121212;
+  color: #E0E0E0;
+  font-family: 'Inter', sans-serif;
 }
-
-/* Custom CSS classes for better Tailwind v4 integration */
-.bg-gold { background-color: var(--color-gold); }
-.bg-neutral-dark { background-color: var(--color-neutral-dark); }
-.bg-neutral-light { background-color: var(--color-neutral-light); }
-.bg-secure-teal { background-color: var(--color-secure-teal); }
-.bg-threat-blue { background-color: var(--color-threat-blue); }
-.bg-alert-amber { background-color: var(--color-alert-amber); }
-.bg-adversary-red { background-color: var(--color-adversary-red); }
-
-.text-gold { color: var(--color-gold); }
-.text-neutral-dark { color: var(--color-neutral-dark); }
-.text-neutral-light { color: var(--color-neutral-light); }
-.text-secure-teal { color: var(--color-secure-teal); }
-.text-threat-blue { color: var(--color-threat-blue); }
-.text-alert-amber { color: var(--color-alert-amber); }
-.text-adversary-red { color: var(--color-adversary-red); }
-
-.border-gold { border-color: var(--color-gold); }
-.border-neutral-light { border-color: var(--color-neutral-light); }
-
-/* Hover states */
-.hover\:bg-gold:hover { background-color: var(--color-gold); }
-.hover\:text-gold:hover { color: var(--color-gold); }
-.hover\:bg-gold\/90:hover { background-color: color-mix(in srgb, var(--color-gold) 90%, transparent); }
-.hover\:bg-neutral-dark\/80:hover { background-color: color-mix(in srgb, var(--color-neutral-dark) 80%, transparent); }
-.hover\:bg-neutral-light:hover { background-color: var(--color-neutral-light); }
-.hover\:text-neutral-dark:hover { color: var(--color-neutral-dark); }
-.hover\:bg-neutral-light\/10:hover { background-color: color-mix(in srgb, var(--color-neutral-light) 10%, transparent); }

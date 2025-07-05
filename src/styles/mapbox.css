@@ -1,0 +1,45 @@
+/* Custom styles for Mapbox GL JS */
+.mapboxgl-map {
+  border-radius: 0.5rem;
+  border: 1px solid rgba(224, 224, 224, 0.2);
+}
+
+.incident-marker {
+  transition: transform 0.3s ease;
+}
+
+.incident-marker:hover {
+  transform: scale(1.2);
+}
+
+.mapboxgl-popup-content {
+  background-color: #121212;
+  color: #e0e0e0;
+  border: 1px solid #fd5d00;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.mapboxgl-popup-close-button {
+  color: #e0e0e0;
+  font-size: 1.2rem;
+}
+
+.mapboxgl-popup-close-button:hover {
+  color: #fd5d00;
+}
+
+.mapboxgl-ctrl-group {
+  background-color: #121212;
+  border: 1px solid #e0e0e0;
+}
+
+.mapboxgl-ctrl button {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.mapboxgl-ctrl button:hover {
+  background-color: #fd5d00;
+  color: #121212;
+}
