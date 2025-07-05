@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    reactStrictMode: true,
-  },
+
+  reactStrictMode: true,
+
   images: {
     domains: ['images.unsplash.com', 'source.unsplash.com'],
   },

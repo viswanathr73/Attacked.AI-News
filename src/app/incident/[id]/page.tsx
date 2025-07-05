@@ -8,16 +8,9 @@ import { mockIncidents, mockNews as mockNewsStories } from '@/lib/mock-data';
 import { formatDateTime, getSeverityColor, getIncidentTypeIcon } from '@/lib/utils';
 import { ArrowLeft } from 'lucide-react';
 
-interface IncidentPageProps {
-  params: { id: string };
-}
-
-export default async function IncidentPage({ params }: IncidentPageProps) {
+export default async function IncidentPage({ params }: { params: { id: string } }) {
   const incident = mockIncidents.find((i) => i.id === params.id);
-
-  if (!incident) {
-    notFound();
-  }
+  if (!incident) notFound();
 
   return (
     <div className="min-h-screen bg-neutral-dark">
