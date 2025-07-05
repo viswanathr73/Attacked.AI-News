@@ -12,7 +12,7 @@ interface IncidentPageProps {
   params: { id: string };
 }
 
-export default function IncidentPage({ params }: IncidentPageProps) {
+export default async function IncidentPage({ params }: IncidentPageProps) {
   const incident = mockIncidents.find((i) => i.id === params.id);
 
   if (!incident) {
