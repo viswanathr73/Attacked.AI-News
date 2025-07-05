@@ -1,6 +1,6 @@
 # Attacked.AI News Platform
 
-![Attacked.AI Logo](public/favicon.ico)
+![Attacked.AI Logo](public/images/attacked-ai.webp)
 
 **Attacked.AI** is a modern, responsive news platform designed to provide real-time global threat intelligence. It features a 3D globe visualization powered by Mapbox GL JS, a live incident feed, and a section for featured news stories. The platform is built with Next.js, TypeScript, Tailwind CSS, and Mapbox GL JS, and is deployed on Vercel.
 
