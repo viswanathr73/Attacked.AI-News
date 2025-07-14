@@ -1,9 +1,8 @@
 'use client';
 
-
-
 import { NewsStory } from "@/types/news";
 import { NewsCard } from "./news-card";
+import { useClientDateTime } from "@/lib/client-hooks";
 import { Grid, List, SortAsc, Filter } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -122,51 +121,55 @@ export function StoryGrid({
         </div>
       ) : (
         <div className="space-y-4">
-          {filteredStories.map((story) => (
-            <div
-              key={story.id}
-              className="flex gap-4 bg-neutral-dark/40 border border-neutral-light/20 rounded-lg p-4 hover:bg-neutral-dark/60 transition-all duration-200 hover:border-gold/50"
-            >
-              {story.imageUrl && (
-                <div className="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
-                  <img
-                    src={story.imageUrl}
-                    alt={story.headline}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
-              <div className="flex-1">
-                <div className="flex items-center space-x-2 mb-2">
-                  <span className="px-2 py-1 bg-gold/20 text-gold text-xs font-medium rounded">
-                    {story.category}
-                  </span>
-                  <span className="text-xs text-neutral-light/60">
-                    {formatDateTime(story.publishedAt)}
-                  </span>
-                </div>
-                <h3 className="font-bold text-neutral-light hover:text-gold transition-colors mb-2 cursor-pointer">
-                  {story.headline}
-                </h3>
-                <p className="text-sm text-neutral-light/80 mb-2 line-clamp-2">
-                  {story.summary}
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-neutral-light/60">
-                    By {story.author}
-                  </span>
-                  {onStoryClick && (
-                    <button
-                      onClick={() => onStoryClick(story)}
-                      className="text-xs text-gold hover:text-gold/80 transition-colors"
-                    >
-                      Read more →
-                    </button>
-                  )}
+          {filteredStories.map((story) => {
+            const formattedDate = useClientDateTime(story.publishedAt);
+            
+            return (
+              <div
+                key={story.id}
+                className="flex gap-4 bg-neutral-dark/40 border border-neutral-light/20 rounded-lg p-4 hover:bg-neutral-dark/60 transition-all duration-200 hover:border-gold/50"
+              >
+                {story.imageUrl && (
+                  <div className="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
+                    <img
+                      src={story.imageUrl}
+                      alt={story.headline}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+                <div className="flex-1">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <span className="px-2 py-1 bg-gold/20 text-gold text-xs font-medium rounded">
+                      {story.category}
+                    </span>
+                    <span className="text-xs text-neutral-light/60">
+                      {formattedDate}
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-neutral-light hover:text-gold transition-colors mb-2 cursor-pointer">
+                    {story.headline}
+                  </h3>
+                  <p className="text-sm text-neutral-light/80 mb-2 line-clamp-2">
+                    {story.summary}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-neutral-light/60">
+                      By {story.author}
+                    </span>
+                    {onStoryClick && (
+                      <button
+                        onClick={() => onStoryClick(story)}
+                        className="text-xs text-gold hover:text-gold/80 transition-colors"
+                      >
+                        Read more →
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
 
