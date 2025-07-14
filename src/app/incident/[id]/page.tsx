@@ -1,19 +1,25 @@
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import { Header } from '@/components/layout/header';
-import { Footer } from '@/components/layout/footer';
-import { MiniMap } from '@/components/map/mini-map';
-import { StoryGrid } from '@/components/news/story-grid';
-import { mockIncidents, mockNews as mockNewsStories } from '@/lib/mock-data';
-import { formatDateTime, getSeverityColor, getIncidentTypeIcon } from '@/lib/utils';
-import { ArrowLeft } from 'lucide-react';
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { MiniMap } from "@/components/map/mini-map";
+import { StoryGrid } from "@/components/news/story-grid";
+import { mockIncidents, mockNews as mockNewsStories } from "@/lib/mock-data";
+import {
+  formatDateTime,
+  getSeverityColor,
+  getIncidentTypeIcon,
+} from "@/lib/utils";
+import { ArrowLeft } from "lucide-react";
 
 export default async function IncidentPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const incident = mockIncidents.find((i) => i.id === params.id);
+  const { id } = await params;
+
+  const incident = mockIncidents.find((i) => i.id === id);
   if (!incident) notFound();
 
   return (
@@ -35,7 +41,9 @@ export default async function IncidentPage({
           {/* Incident Header */}
           <div className="mb-8">
             <div className="flex items-center space-x-4 mb-4">
-              <span className="text-2xl">{getIncidentTypeIcon(incident.type)}</span>
+              <span className="text-2xl">
+                {getIncidentTypeIcon(incident.type)}
+              </span>
               <span
                 className={`px-3 py-1 rounded-full text-sm font-medium ${getSeverityColor(
                   incident.severity
@@ -57,7 +65,9 @@ export default async function IncidentPage({
 
           {/* Mini Map */}
           <div className="mb-8">
-            <h3 className="text-lg font-semibold text-neutral-light mb-2">Incident Location</h3>
+            <h3 className="text-lg font-semibold text-neutral-light mb-2">
+              Incident Location
+            </h3>
             <MiniMap incident={incident} className="h-64 rounded-lg" />
           </div>
 
@@ -65,31 +75,43 @@ export default async function IncidentPage({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-semibold text-neutral-light mb-2">Location</h3>
+                <h3 className="text-lg font-semibold text-neutral-light mb-2">
+                  Location
+                </h3>
                 <p className="text-neutral-light/80">
                   {incident.location.city}, {incident.location.country}
                 </p>
               </div>
               {incident.source && (
                 <div>
-                  <h3 className="text-lg font-semibold text-neutral-light mb-2">Source</h3>
+                  <h3 className="text-lg font-semibold text-neutral-light mb-2">
+                    Source
+                  </h3>
                   <p className="text-neutral-light/80">{incident.source}</p>
                 </div>
               )}
               {incident.target && (
                 <div>
-                  <h3 className="text-lg font-semibold text-neutral-light mb-2">Target</h3>
+                  <h3 className="text-lg font-semibold text-neutral-light mb-2">
+                    Target
+                  </h3>
                   <p className="text-neutral-light/80">{incident.target}</p>
                 </div>
               )}
             </div>
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-semibold text-neutral-light mb-2">Status</h3>
-                <p className="text-neutral-light/80 capitalize">{incident.status}</p>
+                <h3 className="text-lg font-semibold text-neutral-light mb-2">
+                  Status
+                </h3>
+                <p className="text-neutral-light/80 capitalize">
+                  {incident.status}
+                </p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-neutral-light mb-2">Tags</h3>
+                <h3 className="text-lg font-semibold text-neutral-light mb-2">
+                  Tags
+                </h3>
                 <div className="flex flex-wrap gap-2">
                   {incident.tags.map((tag) => (
                     <span
@@ -106,7 +128,9 @@ export default async function IncidentPage({
 
           {/* Related Stories */}
           <div>
-            <h3 className="text-lg font-semibold text-neutral-light mb-4">Related Stories</h3>
+            <h3 className="text-lg font-semibold text-neutral-light mb-4">
+              Related Stories
+            </h3>
             <StoryGrid
               stories={mockNewsStories.filter((story) =>
                 story.relatedIncidents?.includes(incident.id)

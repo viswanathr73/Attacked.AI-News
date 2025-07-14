@@ -13,10 +13,10 @@ export function FeaturedStories({
   stories = [],
   onStoryClick,
 }: FeaturedStoriesProps) {
-  if (!stories.length) return null; // or show a fallback UI
+  if (!stories.length) return null;
 
   const featuredStory = stories
-    .slice() // clone array to avoid mutating original
+    .slice()
     .sort(
       (a, b) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
@@ -128,7 +128,7 @@ export function FeaturedStories({
                 key={story.id}
                 story={story}
                 onClick={() => onStoryClick?.(story)}
-                variant="standard"
+                variant="default"
               />
             ))}
           </div>

@@ -104,6 +104,7 @@ export const mockNews: NewsStory[] = [
       "The attack, which began early Tuesday morning, has crippled electronic health records systems and forced hospitals to revert to paper-based processes...",
     author: "Sarah Chen",
     publishedAt: new Date(Date.now() - 1 * 60 * 60 * 1000).toISOString(),
+    publishedFormatted: new Date(Date.now() - 1 * 60 * 60 * 1000).toLocaleString(),
     imageUrl:
       "https://images.pexels.com/photos/3938023/pexels-photo-3938023.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
     category: "Cybersecurity",
@@ -119,6 +120,7 @@ export const mockNews: NewsStory[] = [
       "The breach was discovered during routine security monitoring and affects approximately 2.3 million citizen records...",
     author: "Michael Rodriguez",
     publishedAt: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString(),
+    publishedFormatted: new Date(Date.now() - 1 * 60 * 60 * 1000).toLocaleString(),
     imageUrl:
       "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=400&fit=crop",
     category: "Government",

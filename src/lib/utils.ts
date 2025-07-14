@@ -50,6 +50,7 @@ export function getIncidentTypeColor(type: string): string {
       return "bg-gray-100 text-gray-800";
   }
 }
+
 export function getIncidentTypeIcon(type: string) {
   switch (type) {
     case "fire":
@@ -62,12 +63,12 @@ export function getIncidentTypeIcon(type: string) {
       return "❓";
   }
 }
+
 export function formatDateTime(date: string | Date): string {
-  // Avoid server mismatch
-  if (typeof window === 'undefined') return ''; // returns nothing on server
+  // Prevent rendering locale-specific output on the server
+  if (typeof window === "undefined") return "";
   return new Date(date).toLocaleString(undefined, {
-    dateStyle: 'medium',
-    timeStyle: 'short',
+    dateStyle: "medium",
+    timeStyle: "short",
   });
 }
-

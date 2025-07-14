@@ -22,14 +22,21 @@ export function AttackMap({
   const [mapLoaded, setMapLoaded] = useState(false);
 
   useEffect(() => {
-    if (!mapContainer.current || map.current) return;
+    if (!mapContainer.current) return;
+
+    // Clean up existing map if it exists
+    if (map.current) {
+      map.current.remove();
+      map.current = null;
+      setMapLoaded(false);
+    }
 
     mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN!;
 
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: MAPBOX_STYLE,
-      center: DEFAULT_MAP_CONFIG.center,
+      center: DEFAULT_MAP_CONFIG.center as [number, number],
       zoom: DEFAULT_MAP_CONFIG.zoom,
       projection: "globe",
     });
@@ -39,9 +46,13 @@ export function AttackMap({
     });
 
     return () => {
-      map.current?.remove();
+      if (map.current) {
+        map.current.remove();
+        map.current = null;
+      }
+      setMapLoaded(false);
     };
-  }, []);
+  }, []); // Empty dependency array - only run on mount/unmount
 
   useEffect(() => {
     if (!map.current || !mapLoaded) return;

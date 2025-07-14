@@ -1,8 +1,7 @@
 "use client";
 
-
 import { NewsStory } from "@/types/news";
-import { formatDateTime } from "@/lib/utils";
+import { useClientDateTime } from "@/lib/client-hooks";
 import { Clock, User, Tag, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -19,6 +18,7 @@ export function NewsCard({
 }: NewsCardProps) {
   const isFeatured = variant === "featured";
   const isCompact = variant === "compact";
+  const formattedDate = useClientDateTime(story.publishedAt);
 
   return (
     <article
@@ -56,7 +56,7 @@ export function NewsCard({
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center space-x-2 text-xs text-neutral-light/60">
             <Clock className="w-3 h-3" />
-            <span>{story.publishedFormatted}</span>
+            <span>{formattedDate}</span>
           </div>
 
           {story.relatedIncidents && story.relatedIncidents.length > 0 && (

@@ -5,6 +5,7 @@ export interface NewsStory {
   content: string;
   author: string;
   publishedAt: string;
+  publishedFormatted: string;
   imageUrl?: string;
   category: string;
   tags: string[];
